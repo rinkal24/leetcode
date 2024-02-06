@@ -6,11 +6,8 @@ class Solution:
         for i in s:
             if (i in ["V", "X"] and prev == "I") or (i in ["L", "C"] and prev == "X") or (i in ["D", "M"] and prev == "C"):
                 total += d[i] - 2* d[prev]
-                print(total)
             else:
                 total += d[i]
-                print("else total", total)
             prev = i
-            print("prev", prev)
             
         return total
