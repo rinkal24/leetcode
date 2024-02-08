@@ -16,7 +16,7 @@ class Solution:
                 start_ind = d[s[end_ind]] + 1
                 d[s[end_ind]] = end_ind
                 end_ind += 1
-                maxlen = max(maxlen, end_ind - start_ind)
+                
                 temp = 1
                 
             else:
