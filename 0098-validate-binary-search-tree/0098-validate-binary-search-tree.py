@@ -5,14 +5,17 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def validate(self, node, low = -math.inf, high = math.inf):
-        if not node:
-            return True
-        if node.val <= low or node.val >= high:
-            return False
-        
-        return (self.validate(node.right, node.val, high) and 
-                self.validate(node.left, low, node.val))
-    
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        return self.validate(root)
+        
+        def inorder(root):
+            if not root:
+                return True
+            if not inorder(root.left):
+                return False
+            if root.val <= self.prev:
+                return False
+            self.prev = root.val
+            return inorder(root.right)
+        
+        self.prev = -math.inf
+        return inorder(root)
