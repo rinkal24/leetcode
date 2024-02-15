@@ -10,21 +10,22 @@ from typing import Optional
 from collections import deque
 
 class Solution:
+    def __init__(self):
+        self.visited = {}
+        
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
         
         if not node:
             return node
-        visited = {}
+        if node in self.visited:
+            return self.visited[node]
         
-        visited[node] = Node(node.val, [])
-        Q = deque([node])
+        cloneNode = Node(node.val, [])
+        self.visited[node] = cloneNode
         
-        while Q:
-            n = Q.popleft()
+        if node.neighbors:
+            cloneNode.neighbors = [self.cloneGraph(n) for n in node.neighbors]
             
-            for neighbor in n.neighbors:
-                if neighbor not in visited:
-                    visited[neighbor] = Node(neighbor.val, [])
-                    Q.append(neighbor)
-                visited[n].neighbors.append(visited[neighbor])
-        return visited[node]
+        return cloneNode
+        
+        
