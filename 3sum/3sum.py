@@ -1,16 +1,26 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        res, dupes = set(), set()
-        seen = {}
+        res = []
+        nums.sort()
         
         for i in range(len(nums)):
-            if nums[i] not in dupes:
-                dupes.add(nums[i])
-                
-                for j in range(i + 1, len(nums)):
-                    comp = - nums[i] - nums[j]
-                    if comp in seen and seen[comp] == i:
-                        res.add(tuple(sorted((nums[i], nums[j], comp))))
-                    
-                    seen[nums[j]] = i
+            if i == 0 or nums[i] != nums[i - 1]:
+                self.twoSumII(nums, i , res)
+        
         return res
+    
+    def twoSumII(self, nums: List[int], i: int, res: List[List[int]]):
+        lo, hi = i+ 1, len(nums) - 1
+        
+        while lo < hi:
+            sumVal = nums[i] + nums[lo] + nums[hi]
+            if sumVal < 0:
+                lo += 1
+            elif sumVal > 0:
+                hi -= 1
+            else:
+                res.append([nums[i], nums[lo], nums[hi]])
+                lo += 1
+                hi -= 1
+                while lo < hi and nums[lo] == nums[lo - 1]:
+                    lo += 1
