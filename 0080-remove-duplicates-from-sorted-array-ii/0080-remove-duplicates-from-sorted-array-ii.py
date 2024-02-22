@@ -10,12 +10,9 @@ class Solution:
                 if writectr <= 2:
                     writer += 1
                     nums[writer] = nums[reader]
-                    reader += 1
-                else:
-                    reader += 1
             else:
                 writectr = 1
                 writer += 1
                 nums[writer] = nums[reader]
-                reader += 1
+            reader += 1
         return writer + 1
