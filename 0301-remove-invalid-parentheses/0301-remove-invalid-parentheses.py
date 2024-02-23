@@ -23,30 +23,30 @@ class Solution:
 
         visited = set()
 
-        queue = deque()
-        queue.append(s)
+        Q = deque()
+        Q.append(s)
         visited.add(s)
 
-        found = False
-        output = []
+        foundFlag = False
+        ans = []
 
-        while queue:
-            expr = queue.popleft()
+        while Q:
+            val = Q.popleft()
 
-            if isValid(expr):
-                output.append(expr)
-                found = True
+            if isValid(val):
+                ans.append(val)
+                foundFlag = True
 
-            if found:
+            if foundFlag:
                 continue
 
-            for i in range(len(expr)):
-                if expr[i] not in '()':
+            for i in range(len(val)):
+                if val[i] not in '()':
                     continue
 
-                candidate = expr[:i] + expr[i+1:] 
-                if candidate not in visited:
-                    queue.append(candidate)
-                    visited.add(candidate)
+                charVal = val[:i] + val[i+1:] 
+                if charVal not in visited:
+                    Q.append(charVal)
+                    visited.add(charVal)
     
-        return output if output else [""]
+        return ans if ans else [""]
