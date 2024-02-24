@@ -1,18 +1,15 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         
-        def backtrack(first, curr):
-            if len(curr) == k:
-                output.append(curr[:])
-                return
-            
-            for i in range(first, n):
-                curr.append(nums[i])
-                backtrack(i + 1, curr)
-                curr.pop()
-                
-        output = []
         n = len(nums)
-        for k in range(n + 1):
-            backtrack(0,[])
+        output = []
+        
+        for i in range(2**n, 2**(n + 1)):
+            bitmask = bin(i)[3:]
+            curr = []
+            for j in range(n):
+                if bitmask[j] == "1":
+                    curr.append(nums[j])
+            output.append(curr)
+        
         return output
