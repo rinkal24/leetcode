@@ -9,10 +9,8 @@ class Solution:
             ctr = Counter(s[start:i + 1])
             if len(ctr) <= k:
                 maxLen = max(maxLen, i - start)
-                ##print(s[:i])
             else:
                 ctr[s[start]] -= 1
-                ##print(i, ctr, start, maxLen)
                 if ctr[s[start]] == 0:
                     del ctr[s[start]]
                 start += 1
