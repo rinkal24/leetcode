@@ -9,7 +9,7 @@ class Solution:
         for i in range(len(s)):
             ctr[s[i]] += 1
             if len(ctr) <= k:
-                maxLen = max(maxLen, i - start + 1)
+                maxLen += 1
             else:
                 ctr[s[start]] -= 1
                 if ctr[s[start]] == 0:
