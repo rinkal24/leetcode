@@ -3,7 +3,6 @@ class Solution:
         
      
         maxLen = 0
-        start = 0
         ctr = collections.Counter() 
         
         for i in range(len(s)):
@@ -11,10 +10,9 @@ class Solution:
             if len(ctr) <= k:
                 maxLen += 1
             else:
-                ctr[s[start]] -= 1
-                if ctr[s[start]] == 0:
-                    del ctr[s[start]]
-                start += 1
+                ctr[s[i - maxLen]] -= 1
+                if ctr[s[i - maxLen]] == 0:
+                    del ctr[s[i - maxLen]]
             
             
-        return maxLen  if k > 0 else 0
+        return maxLen 
