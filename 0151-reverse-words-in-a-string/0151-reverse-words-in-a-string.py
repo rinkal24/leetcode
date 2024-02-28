@@ -14,5 +14,7 @@ class Solution:
                 
         if len(ans) > 0:
             res = ans + res
-        
-        return res if res[0] != " " else res[1:]
+        else:
+            res = res[1:]
+            
+        return res 
