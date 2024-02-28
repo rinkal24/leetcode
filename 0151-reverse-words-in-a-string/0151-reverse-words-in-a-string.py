@@ -8,10 +8,11 @@ class Solution:
             else:
                 if len(ans) > 0:
                     res = " "+ ans + res
+                    
                 ans = ""
                 continue
-        
+                
         if len(ans) > 0:
-            res = ans + res + " "
+            res = ans + res
         
-        return res.strip()
+        return res if res[0] != " " else res[1:]
