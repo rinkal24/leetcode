@@ -1,20 +1,21 @@
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
-        d = [['' for _ in range(len(s))] for _ in range(numRows)]
         
+        d = {}
         nr = 0
-        nc = 0
         patternDown = True
         
         for i in range(len(s)):
-            d[nr][nc] = s[i]
-            
+            if nr not in d:
+                d[nr] = [s[i]]
+            else:
+                d[nr] += s[i]
+                
             if i + 1 == len(s):
                 break
             
             elif nr == numRows - 1:
                 patternDown = False
-                nc += 1
                 if nr - 1 >= 0:
                     nr -= 1
                 continue
@@ -29,16 +30,15 @@ class Solution:
                 nr += 1
             else:
                 nr -= 1
-                nc += 1
-                    
-    
+           
         res = ""
+        i = 0
         
-        
-        for i in range(numRows):
-            for j in range(nc + 1):
-                if d[i][j] != '':
-                    res += d[i][j]
+        while i < numRows and i < len(s):
+            res += ''.join(d[i])
             
-        
+            i += 1
+            
+            
+       
         return res
