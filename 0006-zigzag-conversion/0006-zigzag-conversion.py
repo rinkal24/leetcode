@@ -8,10 +8,11 @@ class Solution:
         
         for i in range(len(s)):
             d[nr][nc] = s[i]
+            
             if i + 1 == len(s):
                 break
             
-            if nr == numRows - 1:
+            elif nr == numRows - 1:
                 patternDown = False
                 nc += 1
                 if nr - 1 >= 0:
@@ -21,7 +22,7 @@ class Solution:
                 patternDown = True
                 nr += 1
 
-            elif (nr + 1 < numRows) and (nr > 0):
+            else: 
                 if patternDown:
                     nr += 1
                 else:
