@@ -13,12 +13,10 @@ class Solution:
                 patternDown = False
                 if nr - 1 >= 0:
                     nr -= 1
-                continue
 
             elif nr == 0:
                 patternDown = True
                 nr = 1
-                continue
             
             else:
                 if patternDown:
