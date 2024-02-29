@@ -17,17 +17,19 @@ class Solution:
                 nc += 1
                 if nr - 1 >= 0:
                     nr -= 1
+                continue
 
             elif nr == 0:
                 patternDown = True
                 nr += 1
+                continue
 
-            else: 
-                if patternDown:
-                    nr += 1
-                else:
-                    nr -= 1
-                    nc += 1
+            # (nr + 1 < numRows) and (nr > 0):
+            if patternDown:
+                nr += 1
+            else:
+                nr -= 1
+                nc += 1
                     
     
         index = 0
