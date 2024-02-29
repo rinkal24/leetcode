@@ -20,11 +20,11 @@ class Solution:
                 nr = 1
                 continue
             
-            
-            if patternDown:
-                nr += 1
             else:
-                nr -= 1
+                if patternDown:
+                    nr += 1
+                else:
+                    nr -= 1
            
         res = ""
         i = 0
