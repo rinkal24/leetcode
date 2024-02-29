@@ -11,8 +11,7 @@ class Solution:
             
             if nr == numRows - 1:
                 patternDown = False
-                if nr - 1 >= 0:
-                    nr -= 1
+                nr -= 1 if (nr - 1 >= 0) else nr
 
             elif nr == 0:
                 patternDown = True
