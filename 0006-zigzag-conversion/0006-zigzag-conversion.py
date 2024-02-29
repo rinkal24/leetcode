@@ -13,16 +13,18 @@ class Solution:
                 patternDown = False
                 if nr - 1 >= 0:
                     nr -= 1
+                continue
 
             elif nr == 0:
                 patternDown = True
                 nr = 1
+                continue
             
+            
+            if patternDown:
+                nr += 1
             else:
-                if patternDown:
-                    nr += 1
-                else:
-                    nr -= 1
+                nr -= 1
            
         res = ""
         i = 0
