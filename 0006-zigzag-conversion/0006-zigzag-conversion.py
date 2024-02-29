@@ -8,24 +8,25 @@ class Solution:
         
         for i in range(len(s)):
             d[nr][nc] = s[i]
+            if i + 1 == len(s):
+                break
             
-            if i + 1 < len(s):
-                if nr == numRows - 1:
-                    patternDown = False
-                    nc += 1
-                    if nr - 1 >= 0:
-                        nr -= 1
+            if nr == numRows - 1:
+                patternDown = False
+                nc += 1
+                if nr - 1 >= 0:
+                    nr -= 1
 
-                elif nr == 0:
-                    patternDown = True
+            elif nr == 0:
+                patternDown = True
+                nr += 1
+
+            elif (nr + 1 < numRows) and (nr > 0):
+                if patternDown:
                     nr += 1
-
-                elif (nr + 1 < numRows) and (nr > 0):
-                    if patternDown:
-                        nr += 1
-                    else:
-                        nr -= 1
-                        nc += 1
+                else:
+                    nr -= 1
+                    nc += 1
                     
     
         index = 0
