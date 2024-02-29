@@ -21,7 +21,7 @@ class Solution:
 
             elif nr == 0:
                 patternDown = True
-                nr += 1
+                nr = 1
                 continue
 
             # (nr + 1 < numRows) and (nr > 0):
@@ -32,7 +32,6 @@ class Solution:
                 nc += 1
                     
     
-        index = 0
         res = ""
         
         
