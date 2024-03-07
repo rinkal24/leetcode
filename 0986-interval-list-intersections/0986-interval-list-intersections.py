@@ -7,12 +7,14 @@ class Solution:
         
         
         while f_ptr < len(firstList) and s_ptr < len(secondList):
-            lo = max(firstList[f_ptr][0], secondList[s_ptr][0])
-            hi = min(firstList[f_ptr][1], secondList[s_ptr][1])
+            f_start, f_end = firstList[f_ptr][0], firstList[f_ptr][1]
+            s_start, s_end = secondList[s_ptr][0], secondList[s_ptr][1]
+            lo = max(f_start, s_start)
+            hi = min(f_end, s_end)
             
             if lo <= hi:
                 res.append([lo, hi])
-            if firstList[f_ptr][1] < secondList[s_ptr][1]:
+            if f_end < s_end:
                 f_ptr += 1
             else:
                 s_ptr += 1
