@@ -11,7 +11,6 @@ class Solution:
                 ctr_s = {}
                 continue
             elif ctr_s == ctr_p:
-                #print('here', ctr_s, start, i)
                 res.append(start)
                 ctr_s[start] -= 1
                 start += 1
@@ -20,7 +19,6 @@ class Solution:
             elif ctr_s[s[i]] > ctr_p[s[i]]:
                 while start <= i:
                     ctr_s = Counter(s[start:i + 1])
-                    #print('inside', ctr_s, start, i)
                     if s[start] == s[i] and ctr_s[s[start]] <= ctr_p[s[start]]:
                         break
                     ctr_s[s[start]] -= 1
@@ -29,8 +27,7 @@ class Solution:
                     start += 1
                     
                     if s[start - 1] == s[i] and ctr_s[s[start - 1]] <= ctr_p[s[start - 1]]:
-                        break
-            #print(ctr_s, start, s[start], s[i])       
+                        break      
                     
         return res
                 
