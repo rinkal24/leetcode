@@ -26,7 +26,7 @@ class Solution:
                         del ctr_s[start]
                     start += 1
                     
-                    if s[start - 1] == s[i] and ctr_s[s[start - 1]] <= ctr_p[s[start - 1]]:
+                    if s[start - 1] == s[i]:
                         break      
                     
         return res
