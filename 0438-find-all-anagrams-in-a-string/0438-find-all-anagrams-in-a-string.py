@@ -19,8 +19,7 @@ class Solution:
             elif ctr_s[s[i]] > ctr_p[s[i]]:
                 while start <= i:
                     ctr_s = Counter(s[start:i + 1])
-                    if s[start] == s[i] and ctr_s[s[start]] <= ctr_p[s[start]]:
-                        break
+                    
                     ctr_s[s[start]] -= 1
                     if ctr_s[start] == 0:
                         del ctr_s[start]
