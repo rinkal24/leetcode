@@ -27,8 +27,6 @@ class Solution:
             divisor += divisor
             powerOfTwo += powerOfTwo
             
-        print(doubles_List)
-        print(powerOfTwo_List)
         
         for i in reversed(range(len(doubles_List))):
             if doubles_List[i] >= dividend:
