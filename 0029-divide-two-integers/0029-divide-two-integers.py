@@ -17,15 +17,23 @@ class Solution:
             negatives -= 1
             divisor = -divisor
 
+        doubles_List = []
+        powersOfTwo_List = []
+        powerOfTwo = 1
+        
+        
+        while divisor >= dividend:
+            doubles_List.append(divisor)
+            powersOfTwo_List.append(powerOfTwo)
+            if divisor < HALF_MIN_INT:
+                break
+            divisor += divisor
+            powerOfTwo += powerOfTwo
             
         quotient = 0
-        while divisor >= dividend:
-            powerOfTwo = -1
-            val = divisor
-            while val >= HALF_MIN_INT and val + val >= dividend:
-                val +=val
-                powerOfTwo += powerOfTwo
-            quotient += powerOfTwo
-            dividend -= val
+        for i in reversed(range(len(doubles_List))):
+            if doubles_List[i] >= dividend:
+                quotient += powersOfTwo_List[i]
+                dividend -= doubles_List[i]
             
-        return -quotient if negatives != 1 else quotient
+        return quotient if negatives != 1 else -quotient
