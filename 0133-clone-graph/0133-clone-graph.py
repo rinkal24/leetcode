@@ -7,23 +7,18 @@ class Node:
 """
 
 from typing import Optional
-
 class Solution:
-    
     def __init__(self):
-        self.visited ={}
-        
+        self.visitedNode = {}
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
         if not node:
-            return node
-        
-        if node in self.visited:
-            return self.visited[node]
+            return None
+        if node in self.visitedNode:
+            return self.visitedNode[node]
         
         cloneNode = Node(node.val, [])
-        self.visited[node] = cloneNode
-        
+        self.visitedNode[node] = cloneNode
         if node.neighbors:
             cloneNode.neighbors = [self.cloneGraph(n) for n in node.neighbors]
-            
-        return self.visited[node]
+        
+        return cloneNode
