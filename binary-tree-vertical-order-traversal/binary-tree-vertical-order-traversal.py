@@ -12,7 +12,6 @@ class Solution:
             node, col = Q.popleft()
             
             if node is not None:
-                #print(node.val)
                 dic_vals[col].append(node.val)
                 Q.append((node.left, col - 1))
                 Q.append((node.right, col + 1))
