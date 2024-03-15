@@ -6,9 +6,8 @@ class Solution:
             if node not in color:
                 color[node] = 0
                 Q = [node]
-
                 while Q:
-                    val = Q.pop()
+                    val= Q.pop()
                     for n in graph[val]:
                         if n not in color:
                             color[n] = color[val] ^ 1
@@ -16,3 +15,4 @@ class Solution:
                         elif color[n] == color[val]:
                             return False
         return True
+            
