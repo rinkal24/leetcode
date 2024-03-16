@@ -19,5 +19,6 @@ class Solution:
                 self.ans = node
                 
             return mid or left or right
+        
         recurseTree(root)
-        return self.ans 
+        return self.ans
