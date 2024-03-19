@@ -1,52 +1,35 @@
-from collections import deque
-
 class Solution:
-    
     def removeInvalidParentheses(self, s: str) -> List[str]:
-
-        # helper to check if the expression is valid
-        def isValid(expr):
-            count = 0
-            for ch in expr:
-                if ch not in '()':
-                    continue
-                if ch == '(':
-                    count += 1
-                elif ch == ')':
-                    count -= 1
-                if count < 0:
-                    return False
-            return count == 0
-
-        if len(s) == 0:
-            return [""]
-
-        visited = set()
-
-        Q = deque()
-        Q.append(s)
-        visited.add(s)
-
-        foundFlag = False
-        ans = []
-
-        while Q:
-            val = Q.popleft()
-
-            if isValid(val):
-                ans.append(val)
-                foundFlag = True
-
-            if foundFlag:
-                continue
-
-            for i in range(len(val)):
-                if val[i] not in '()':
-                    continue
-
-                charVal = val[:i] + val[i+1:] 
-                if charVal not in visited:
-                    Q.append(charVal)
-                    visited.add(charVal)
+        self.longest_string = -1
+        self.res = set()
+        self.dfs(s, 0, [], 0, 0)
+        return self.res
     
-        return ans if ans else [""]
+    def dfs(self, string, cur_idx, cur_res, l_count, r_count):
+        if cur_idx >= len(string):
+            if l_count == r_count:
+                if len(cur_res) > self.longest_string:
+                    self.res = set()
+                    self.longest_string = len(cur_res)
+                    self.res.add("".join(cur_res))
+                    
+                elif len(cur_res) == self.longest_string:
+                    self.res.add("".join(cur_res))
+        else:
+            cur_char = string[cur_idx]
+            if cur_char == "(":
+                cur_res.append(cur_char)
+                self.dfs(string, cur_idx + 1, cur_res, l_count + 1, r_count)
+                cur_res.pop()
+                self.dfs(string, cur_idx + 1, cur_res, l_count, r_count)
+            elif cur_char == ")":
+                self.dfs(string, cur_idx + 1, cur_res, l_count, r_count)
+                
+                if l_count > r_count:
+                    cur_res.append(cur_char)
+                    self.dfs(string, cur_idx + 1, cur_res, l_count, r_count + 1)
+                    cur_res.pop()
+            else:
+                cur_res.append(cur_char)
+                self.dfs(string, cur_idx + 1, cur_res, l_count, r_count)
+                cur_res.pop()
