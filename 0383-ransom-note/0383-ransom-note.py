@@ -1,10 +1,10 @@
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-       
-        for c in ransomNote:
-            if c not in magazine:
+        ctr_m = Counter(magazine)
+        ctr_r = Counter(ransomNote)
+        
+        for char, count in ctr_r.items():
+            magazine_count = ctr_m[char]
+            if magazine_count < count:
                 return False
-            loc = magazine.index(c)
-            magazine = magazine[:loc] + magazine[loc + 1:]
-            
         return True
