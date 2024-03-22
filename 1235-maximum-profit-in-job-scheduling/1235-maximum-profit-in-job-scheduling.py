@@ -2,21 +2,20 @@ from heapq import heappush, heappop
 
 class Solution:
     def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
-        jobs = sorted(zip(startTime, endTime, profit))
-        maxprofit = 0
-        heap = []
+        N = len(startTime)
+        jobs = list(zip(startTime, endTime, profit))
+        jobs.sort()
+        startTime.sort()
         
-        for start, end, profit in jobs:
-            while heap and start >= heap[0][0]:
-                maxprofit = max(maxprofit, heap[0][1])
-                heappop(heap)
+        @lru_cache(None)
+        def rec(i):
+            if i == N:
+                return 0
             
-            combined_job = (end, profit + maxprofit)
-            
-            heappush(heap, combined_job)
-            
-        while heap:
-            maxprofit = max(maxprofit, heap[0][1])
-            heappop(heap)
+            j = bisect_left(startTime, jobs[i][1])
+                
+            one = jobs[i][2] + rec(j)
+            two = rec(i + 1)
+            return max(one, two) 
         
-        return maxprofit
+        return rec(0)
