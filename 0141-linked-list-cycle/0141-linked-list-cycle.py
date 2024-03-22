@@ -7,7 +7,6 @@
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         arr = []
-        seen = set()
         
         while head:
             if head in arr:
