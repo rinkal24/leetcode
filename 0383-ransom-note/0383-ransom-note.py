@@ -3,8 +3,7 @@ class Solution:
         ctr_m = Counter(magazine)
         ctr_r = Counter(ransomNote)
         
-        for char, count in ctr_r.items():
-            magazine_count = ctr_m[char]
-            if magazine_count < count:
+        for c in ctr_r:
+            if ctr_m[c] < ctr_r[c]:
                 return False
         return True
