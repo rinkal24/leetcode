@@ -10,7 +10,7 @@ class Solution:
                 d_num_ind[i] = -1
                 
         for ind, val in enumerate(nums):
-            if ctr_nums[val] > 1:
+            if val in d_num_ind:
                 if d_num_ind[val] >= 0:
                     diff = min(diff, ind - d_num_ind[val])
                 d_num_ind[val] = ind
