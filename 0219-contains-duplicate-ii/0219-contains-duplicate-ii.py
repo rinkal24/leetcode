@@ -9,10 +9,10 @@ class Solution:
             if ctr_nums[i] > 1:
                 d_num_ind[i] = -1
                 
-        for i in range(len(nums)):
-            if ctr_nums[nums[i]] > 1:
-                if d_num_ind[nums[i]] >= 0:
-                    diff = min(diff, i - d_num_ind[nums[i]])
-                d_num_ind[nums[i]] = i
+        for ind, val in enumerate(nums):
+            if ctr_nums[val] > 1:
+                if d_num_ind[val] >= 0:
+                    diff = min(diff, ind - d_num_ind[val])
+                d_num_ind[val] = ind
                 
         return True if diff <= k else False
