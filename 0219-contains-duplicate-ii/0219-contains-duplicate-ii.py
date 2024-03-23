@@ -13,6 +13,8 @@ class Solution:
             if val in d_num_ind:
                 if d_num_ind[val] >= 0:
                     diff = min(diff, ind - d_num_ind[val])
+                if diff <= k :
+                    return True
                 d_num_ind[val] = ind
                 
-        return True if diff <= k else False
+        return False
