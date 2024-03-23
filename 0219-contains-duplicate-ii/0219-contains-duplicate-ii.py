@@ -6,7 +6,7 @@ class Solution:
         d_num_ind = {}
         
         for i in nums:
-            if ctr_nums[i] > 1 and i not in d_num_ind:
+            if ctr_nums[i] > 1:
                 d_num_ind[i] = -1
                 
         for i in range(len(nums)):
