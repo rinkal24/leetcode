@@ -1,10 +1,7 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        res = []
         
         words_sort = {}
-        ctr = 0
-        res = []
         
         for ind in range(len(strs)):
             val = ''.join(sorted(strs[ind]))
