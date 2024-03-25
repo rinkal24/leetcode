@@ -10,13 +10,10 @@ class Solution:
             if not node:
                 return False
             
-            
-            
             tSum += node.val
             
             if not node.left and not node.right:
                 return tSum == targetSum
-            
             
             return dfs(node.left, tSum) or dfs(node.right, tSum)
         
