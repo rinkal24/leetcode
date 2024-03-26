@@ -6,13 +6,10 @@ class Solution:
         minLen = math.inf
         for i in range(len(nums)):
             total += nums[i]
-            if total >= target:
-                #print(total, start, i)
+              
+            while total >= target:
                 minLen = min(minLen, i - start + 1)
-                while total >= target:
-                    minLen = min(minLen, i - start + 1)
-                    total -= nums[start]
-                    start += 1
-                    #print('here', start, total)
-        #print(start)
+                total -= nums[start]
+                start += 1
+                    
         return minLen if minLen != math.inf else 0
