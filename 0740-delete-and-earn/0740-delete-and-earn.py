@@ -1,18 +1,20 @@
 class Solution:
     def deleteAndEarn(self, nums: List[int]) -> int:
         points = defaultdict(int)
-        max_num = 0
         
         for n in nums:
             points[n] += n
-            max_num = max(max_num, n)
             
-        @cache
-        def dfs(num):
-            if num == 0:
-                return 0
-            if num == 1:
-                return points[num]
-            return max(dfs(num - 1), dfs(num - 2) + points[num])
         
-        return dfs(max_num)
+        ele = sorted(points.keys())
+        twoBack = 0
+        oneBack = points[ele[0]]
+        
+        for i in range(1, len(ele)):
+            if ele[i] - ele[i - 1] == 1:
+                twoBack, oneBack = oneBack, max(oneBack, twoBack + points[ele[i]])
+            else:
+                twoBack, oneBack = oneBack, oneBack + points[ele[i]]
+                 
+        
+        return oneBack
