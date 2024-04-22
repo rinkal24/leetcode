@@ -1,13 +1,23 @@
 class Solution:
     def frequencySort(self, s: str) -> str:
         ctr_s = Counter(s)
+        max_freq = max(ctr_s.values())
         
-        ctr_s = sorted(ctr_s.items(), key = lambda x:x[1], reverse = True)
+        
+        buckets = [[] for _ in range(max_freq + 1)]
+        
         
         res = ""
         
-        for i in range(len(ctr_s)):
-            res += ctr_s[i][0] * ctr_s[i][1]
+        for letter,freq in ctr_s.items():
+            buckets[freq].append(letter)
+            
+        
+        for i in reversed(range(len(buckets))):
+            for j in buckets[i]:
+                res += j * i
+        
+        
             
         
         return res
